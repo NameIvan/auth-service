@@ -4,9 +4,6 @@ namespace app\modules\Log\forms;
 
 use yii\base\Model;
 
-/**
- * ContactForm is the model behind the contact form.
- */
 class LogForm extends Model
 {
     public $id;

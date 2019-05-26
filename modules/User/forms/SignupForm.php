@@ -7,9 +7,6 @@ use Nahid\JsonQ\Jsonq;
 use Yii;
 use yii\base\Model;
 
-/**
- * ContactForm is the model behind the contact form.
- */
 class SignupForm extends Model
 {
     public $firstname;
