@@ -32,7 +32,7 @@ docker-compose up -d --force-recreate
 
 ### Run test
 ```bash
-./test
+./test.sh
 ```
 
 ### RabbitMQ management

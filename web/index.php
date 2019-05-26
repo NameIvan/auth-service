@@ -1,7 +1,7 @@
 <?php
 
-if (file_exists(__DIR__.'/env.php'))
-    require __DIR__.'/env.php';
+if (file_exists(__DIR__ . '/env.example.php'))
+    require __DIR__ . '/env.example.php';
 
 defined('YII_DEBUG') or define('YII_DEBUG', false);
 defined('YII_ENV') or define('YII_ENV', 'prod');
