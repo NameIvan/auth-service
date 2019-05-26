@@ -1,0 +1,49 @@
+{
+  "rabbit_version": "3.7.14",
+  "users": [
+    {
+      "name": "guest",
+      "password_hash": "1/IFftOoROuRzN8O20rN14CkFCTYbanvgqitXZp0z98zpUIL",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": "administrator"
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "guest",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "parameters": [],
+  "policies": [],
+  "queues": [
+    {
+      "name": "ms_analytics_log",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-ha-policy": "all"
+      }
+    }
+  ],
+  "exchanges": [],
+  "bindings": [
+    {
+      "source": "amq.direct",
+      "vhost": "/",
+      "destination": "ms_analytics_log",
+      "destination_type": "queue",
+      "routing_key": "add_log",
+      "arguments": {}
+    }
+  ]
+}

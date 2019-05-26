@@ -37,4 +37,11 @@ docker-compose up -d --force-recreate
 
 ### RabbitMQ management
 [http://localhost:15672/](http://localhost:15672/) **[guest:guest]**
+- for add new producers or consumers describe them in "config/rabbitmq.php"
 
+### API documentation
+- open in browser /web/docs/index.html
+- for generate documentation:
+```bash
+    php bin/generate-documentation.php
+```

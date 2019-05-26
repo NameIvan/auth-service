@@ -11,7 +11,7 @@ services:
   auth-backend:
     build: .
     volumes:
-       - auth-store:/app/storage # comment this line if you need local files share
+      - auth-store:/app/storage # comment this line if you need local files share
 #       - ./:/app/:cached # uncomment this line if you need local files share
 
   auth-worker:
@@ -27,7 +27,9 @@ services:
       -  127.0.0.1:15672:15672
       -  127.0.0.1:5672:5672
     volumes:
-      - rabbitmq-data:/var/lib/rabbitmq
+      - rabbitmq-data:/var/lib/rabbitmq:rw
+      - ./docker/rabbitmq/definitions.json:/opt/definitions.json:ro
+      - ./docker/rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
 
 volumes:
   auth-store:

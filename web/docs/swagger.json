@@ -1,0 +1,205 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Authorization Service API",
+        "version": "1"
+    },
+    "paths": {
+        "/api/v1/log": {
+            "post": {
+                "operationId": "app\\controllers\\api\\v1\\LogController::actionIndex",
+                "parameters": [
+                    {
+                        "name": "id_user",
+                        "in": "path",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "source_label",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "example": {
+                                    "id_user": 1,
+                                    "source_label": "search_page"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "404": {
+                        "description": "Not found action"
+                    },
+                    "500": {
+                        "description": "500 Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/api/v1/user/signup": {
+            "post": {
+                "operationId": "app\\controllers\\api\\v1\\UserController::actionSignup",
+                "parameters": [
+                    {
+                        "name": "firstname",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lastname",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nickname",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "age",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "example": {
+                                    "firstname": "Artem",
+                                    "lastname": "Art",
+                                    "nickname": "art20",
+                                    "password": "pass123",
+                                    "age": 20
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": {
+                                        "id": 1,
+                                        "firstname": "Artem",
+                                        "lastname": "Art",
+                                        "nickname": "art20",
+                                        "age": 20
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Request data is not valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": {
+                                        "firstname": [
+                                            "Firstname cannot be blank."
+                                        ],
+                                        "nickname": [
+                                            "Nickname already exists."
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/signin": {
+            "post": {
+                "operationId": "app\\controllers\\api\\v1\\UserController::actionSignin",
+                "parameters": [
+                    {
+                        "name": "nickname",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "example": {
+                                    "nickname": "art20",
+                                    "password": "pass123"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": {
+                                        "id": 1,
+                                        "firstname": "Artem",
+                                        "lastname": "Art",
+                                        "nickname": "art20",
+                                        "age": 20
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Nickname or password is incorrect"
+                    }
+                }
+            }
+        }
+    }
+}

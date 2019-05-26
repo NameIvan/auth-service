@@ -1,8 +1,14 @@
 <?php
-require_once(__DIR__ . '/../vendor/autoload.php');
 
-$s = new \SocialTech\SlowStorage();
+if (file_exists(__DIR__.'/env.php'))
+    require __DIR__.'/env.php';
 
-$s->store(__DIR__ . '/../storage/test', 'test');
+defined('YII_DEBUG') or define('YII_DEBUG', false);
+defined('YII_ENV') or define('YII_ENV', 'prod');
 
-echo 'Vendor is installed & file is writable. <h3>Let\'s Start!)</h3>';
+require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../vendor/yiisoft/yii2/Yii.php';
+
+$config = require __DIR__ . '/../config/web.php';
+
+(new yii\web\Application($config))->run();
